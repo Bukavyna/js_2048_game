@@ -14,6 +14,7 @@ const messageLose = document.querySelector('.message-lose');
 function renderBoard(board) {
   board.flat().forEach((value, index) => {
     const cell = cells[index];
+
     cell.textContent = value === 0 ? '' : value;
     cell.className = `field-cell field-cell--${value}`;
   });
@@ -23,14 +24,14 @@ function renderScore(score) {
   scoreElement.textContent = score;
 }
 
-function renderStatus(status) {
+function renderStatus(gameStatus) {
   messageStart.classList.add('hidden');
   messageWin.classList.add('hidden');
   messageLose.classList.add('hidden');
 
-  if (status === 'win') {
+  if (gameStatus === 'win') {
     messageWin.classList.remove('hidden');
-  } else if (status === 'lose') {
+  } else if (gameStatus === 'lose') {
     messageLose.classList.remove('hidden');
   }
 }
@@ -44,10 +45,12 @@ function updateUi() {
 startButton.addEventListener('click', () => {
   game.start();
   updateUi();
-})
+});
 
 document.addEventListener('keydown', (e) => {
-  if (game.getStatus() !== 'playing') return;
+  if (game.getStatus() !== 'playing') {
+    return;
+  }
 
   let moved = false;
 
