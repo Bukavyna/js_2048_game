@@ -263,5 +263,3 @@ export default class Game {
     this.board[i][j] = Math.random() < 0.9 ? 2 : 4;
   }
 }
-
-module.exports = Game;
