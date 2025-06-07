@@ -45,7 +45,9 @@ function updateUi() {
 startButton.addEventListener('click', () => {
   game.start();
   updateUi();
+  startButton.classList.remove('start');
   startButton.textContent = 'Restart';
+  startButton.classList.add('restart');
 });
 
 document.addEventListener('keydown', (e) => {
